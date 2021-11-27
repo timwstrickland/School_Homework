@@ -4,15 +4,13 @@ public class Hybrid extends Automobile {
     private int milesPerGallon;
 
     public Hybrid() {
-        super.setMake("Tesla");
-        super.setModel("Model S");
+        super.setMakeModel("Tesla Model S");
         super.setPrice(50000);
         this.milesPerGallon = 35;
     }
 
-    public Hybrid (String make, String model, int price, int milesPerGallon) {
-        super.setMake(make);
-        super.setModel(model);
+    public Hybrid (String makeModel, int price, int milesPerGallon) {
+        super.setMakeModel(makeModel);
         super.setPrice(price);
         this.milesPerGallon = milesPerGallon;
     }
@@ -39,7 +37,7 @@ public class Hybrid extends Automobile {
 
     @Override
     public String toString() {
-        return ("automobile make: " + super.getMake() + "\nautomobile model: " + super.getModel()
+        return ("automobile make: " + super.getMakeModel()
                 + "\nprice: " + super.getPrice() + " \nsales tax: " + salesTax(super.getPrice())
                 + "\nMiles per Gallon: " + this.milesPerGallon);
     }

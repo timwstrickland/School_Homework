@@ -3,10 +3,9 @@ package com.company;
 public class Electric extends Automobile {
     private int weight;
 
-    public Electric(String make, String model, int price, int weight) {
+    public Electric(String makeModel, int price, int weight) {
         this.weight = weight;
-        super.setMake(make);
-        super.setModel(model);
+        super.setMakeModel(makeModel);
         super.setPrice(price);
     }
 
@@ -31,7 +30,7 @@ public class Electric extends Automobile {
 
     @Override
     public String toString() {
-        return ("automobile make: " + super.getMake() + "\nautomobile model: " + super.getModel()
+        return ("automobile make: " + super.getMakeModel()
                 + "\nprice: " + super.getPrice() + " \nsales tax: " + salesTax(super.getPrice())
                 + "\nWeight: " + this.weight);
     }

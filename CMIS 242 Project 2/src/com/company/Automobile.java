@@ -1,39 +1,28 @@
 package com.company;
 
 public class Automobile {
-    private String make;
-    private String model;
+    private String makeModel;
     private int price;
 
     public Automobile() {
-        this.make = "Ford";
-        this.model = "Mustang";
+        this.makeModel = "Ford Mustang";
         this.price = 30000;
     }
-    public Automobile(String make, String model, int price) {
-        this.make = make;
-        this.model = model;
+    public Automobile(String makeModel, int price) {
+        this.makeModel = makeModel;
         this.price = price;
     }
 
-    public String getMake() {
-        return make;
-    }
-
-    public String getModel() {
-        return model;
+    public String getMakeModel() {
+        return makeModel;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
+    public void setMakeModel(String makeModel) {
+        this.makeModel = makeModel;
     }
 
     public void setPrice(int price) {
@@ -45,7 +34,7 @@ public class Automobile {
     }
 
     public String toString() {
-        return ("automobile make: " + this.make + "\nautomobile model: " + this.model
+        return ("automobile make: " + this.makeModel
         + "\nprice: " + this.price + "\nsales tax: " + salesTax(this.price));
     }
 }
