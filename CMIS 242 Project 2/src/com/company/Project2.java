@@ -32,11 +32,10 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
     private JLabel weightInPounds;
     // Create Text Fields
     private JTextField jtfMakeModel;
-    private JFormattedTextField jftfSalesPrice;
-    private JFormattedTextField jtfMilesPerGallon;
-    private JTextField jtfSalesPrice;
-    private JTextField jtfWeightInPounds;
     private JTextField jtfSalesTax;
+    private JFormattedTextField jtfSalesPrice;
+    private JFormattedTextField jtfMilesPerGallon;
+    private JFormattedTextField jtfWeightInPounds;
     // Create the radio buttons
     private JRadioButton hybrid;
     private JRadioButton electric;
@@ -69,11 +68,17 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
         salesPrice = new JLabel("Sales Price");
         gbc.gridy = 1;
         topPanel.add(salesPrice, gbc);
-        jtfMakeModel = new JTextField(15);
+        jtfMakeModel = new JTextField(10);
         gbc.gridx = 2;
         gbc.gridy = 0;
         topPanel.add(jtfMakeModel, gbc);
-        jtfSalesPrice = new JTextField(15);
+        //Create a number formatter to only allow integers in the fields and remove commas.
+        NumberFormat nf = NumberFormat.getIntegerInstance();
+        nf.setGroupingUsed(false);
+        NumberFormatter nft = new NumberFormatter(nf);
+        nft.setAllowsInvalid(false);
+        jtfSalesPrice = new JFormattedTextField(nft);
+        jtfSalesPrice.setColumns(10);
         gbc.gridy = 1;
         topPanel.add(jtfSalesPrice, gbc);
         final JPanel spacerTop = new JPanel();
@@ -91,7 +96,9 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
         gbc.gridy = 1;
         gbc.fill = GridBagConstraints.BOTH;
         add(midPanel, gbc);
-        midPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Automobile Type", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
+        // Create mid panel layer
+        midPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Automobile Type",
+                TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
         hybrid = new JRadioButton();
         hybrid.setText("Hybrid");
         gbc = new GridBagConstraints();
@@ -129,8 +136,6 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.ipadx = 20;
         midPanel.add(spacerMid2, gbc);
-        NumberFormat nf = NumberFormat.getIntegerInstance();
-        NumberFormatter nft = new NumberFormatter(nf);
         jtfMilesPerGallon = new JFormattedTextField(nft);
         gbc = new GridBagConstraints();
         gbc.gridx = 4;
@@ -139,7 +144,6 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
         jtfMilesPerGallon.setColumns(10);
         midPanel.add(jtfMilesPerGallon, gbc);
         jtfWeightInPounds = new JFormattedTextField(nft);
-        nft.setAllowsInvalid(false);
         gbc.gridy = 1;
         jtfWeightInPounds.setColumns(10);
         midPanel.add(jtfWeightInPounds, gbc);
@@ -180,6 +184,11 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
         displayReportButton = new JButton("Display Report");
         displayReportButton.setPreferredSize(new Dimension(150, 25));
         gbc.gridy = 2;
+        // Add buttons to buttongroup
+        vehicleType.add(hybrid);
+        vehicleType.add(electric);
+        vehicleType.add(other);
+        // Add event listeners
         bottomPanel.add(displayReportButton, gbc);
         computeSalesTaxButton.addActionListener(this);
         clearFieldsButton.addActionListener(this);
@@ -187,7 +196,12 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
         hybrid.addItemListener(this);
         electric.addItemListener(this);
         other.addItemListener(this);
-        // Set up Grid layout with correct JPanel positions
+        jtfSalesPrice.setValue(0);
+        jtfWeightInPounds.setValue(0);
+        jtfMilesPerGallon.setValue(0);
+        other.setSelected(true);
+        jtfSalesPrice.setToolTipText("This field is formatted for numbers only. Letters and Special Characters will not work\n" +
+                "When erasing the number, please highlight it and type the new number, or press the button Clear Fields");
     }
 
     public static void main(String[] args) {
@@ -195,6 +209,7 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
         p2.setSize(450, 450);
         p2.setVisible(true);
         p2.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        double x = 1;
     }
 
     @Override
@@ -221,14 +236,14 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
 
         if (e.getSource() == clearFieldsButton) {
             jtfMakeModel.setText("");
-            jtfSalesPrice.setText("");
-            jtfMilesPerGallon.setText("");
-            jtfWeightInPounds.setText("");
+            jtfSalesPrice.setValue(0);
+            jtfMilesPerGallon.setValue(0);
+            jtfWeightInPounds.setValue(0);
             jtfSalesTax.setText("");
         }
 
         if (e.getSource() == displayReportButton) {
-            Frame frame = new Frame();
+            JFrame frame = new JFrame();
             frame.setSize(500, 300);
             frame.setLayout(new FlowLayout());
             TextArea ta2 = new TextArea(5, 50);
@@ -243,12 +258,18 @@ public class Project2 extends JFrame implements ActionListener, ItemListener, Te
 
         if (hybrid.isSelected()) {
             this.radioState = 1;
+            jtfMilesPerGallon.setEditable(true);
+            jtfWeightInPounds.setEditable(false);
         }
         if (electric.isSelected()) {
             this.radioState = 2;
+            jtfWeightInPounds.setEditable(true);
+            jtfMilesPerGallon.setEditable(false);
         }
         if (other.isSelected()) {
             this.radioState = 3;
+            jtfMilesPerGallon.setEditable(false);
+            jtfWeightInPounds.setEditable(false);
         }
     }
 
