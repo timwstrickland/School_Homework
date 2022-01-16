@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 /* File: Shape.java
    Author: Timothy Strickland
    Date: 1/9/2022
@@ -15,12 +17,5 @@ public class Shape {
     public Shape(String name, int numberOfDimensions) {
         this.name = name;
         this.numberOfDimensions = numberOfDimensions;
-    }
-    public static void main(String[] args) {
-        System.out.println("*********Welcome to the Java OO Shapes Program*********");
-        System.out.println("Select from the menu below:\n");
-        System.out.println("1. Construct a Circle");
-        System.out.println("2. Construct a Rectangle");
-        System.out.println("3. ")
     }
 }
