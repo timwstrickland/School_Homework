@@ -7,11 +7,14 @@ package com.company;
  */
 public abstract class TwoDimensionalShape extends Shape {
     // Since a TwoDimensionalShape is a type of shape, we state that this class extends shape.
+    // This is an abstract class, since there is no need to make a TwoDimensionalShape by itself.
+    // We want more restricted access to our area variable by giving no access modifier.
     double area;
 
 
     public TwoDimensionalShape(String name) {
-        // Constructor that calls the super constructor.
+        // Here we pass the number of dimensions to the superclass, the name is set in the subclass
+        // since we don't know what type of shape this will be yet.
         super(name, 2);
     }
 

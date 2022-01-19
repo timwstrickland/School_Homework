@@ -7,7 +7,7 @@ package com.company;
 public class Square extends TwoDimensionalShape{
     // Since a Square is a type of TwoDimensionalShape, we state that this class extends that class.
     // We just need to know 1 side of a square, since all sides are of equal length.
-    double side;
+    private final double side;
 
     public Square(double side) {
         // Constructor that sets the name and side of the Square.

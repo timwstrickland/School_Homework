@@ -24,15 +24,18 @@ public class ShapesMenu {
             abstract public Shape get(Scanner scanner);
 
             public String getStringAttribute(String attributeName, Scanner scanner) {
+                // This method creates the strings presented to the user, modifying the object.
                 System.out.print("What is the " + attributeName + " of the " + label.toLowerCase() + "? ");
                 return scanner.nextLine();
             }
 
             public Double getDoubleAttribute(String attributeName, Scanner scanner) {
+                // since all the main attributes are doubles for shapes, this will get the double attribute.
                 return Double.valueOf(getStringAttribute(attributeName, scanner));
             }
         }
 
+        // Create entries for our menu, where we return the attribute name.
         private final static MenuEntry circleEntry = new MenuEntry("Circle") {
 
             @Override
@@ -94,7 +97,7 @@ public class ShapesMenu {
 
             @Override
             public Shape get(Scanner scanner) {
-                return new Cylinder(getDoubleAttribute("radius", scanner), getDoubleAttribute("height", scanner));
+                return new Sphere(getDoubleAttribute("radius", scanner));
             }
         };
 

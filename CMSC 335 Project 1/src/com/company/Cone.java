@@ -7,10 +7,11 @@ package com.company;
 public class Cone extends ThreeDimensionalShape{
     // Since a Cone is a type of ThreeDimensionalShape, we state that this class extends that class.
     // Cone needs radius and height
-    double radius;
-    double height;
+    private final double radius;
+    private final double height;
 
     public Cone(double radius, double height) {
+        // Here we pass in the name to the super class.
         super ("Cone");
         this.radius = radius;
         this.height = height;

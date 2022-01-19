@@ -7,10 +7,10 @@ package com.company;
 public class Circle extends TwoDimensionalShape {
     // Since a Circle is a type of TwoDimensionalShape, we state that this class extends that class.
     // In order to calculate the area of a circle, we need to know the radius of the circle.
-    double radius;
+    private final double radius;
 
     public Circle(double radius) {
-        // Constructor that sets the name and radius of the circle.
+        // Here we pass in the name to the super class.
         super("Circle");
         this.radius = radius;
     }

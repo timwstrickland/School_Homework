@@ -7,8 +7,8 @@ package com.company;
 public class Triangle extends TwoDimensionalShape {
     // Since a Triangle is a type of TwoDimensionalShape, we state that this class extends that class.
     // In order to calculate the area of a triangle, we need to know the base and the height.
-    double height;
-    double base;
+    private final double height;
+    private final double base;
 
     public Triangle(double height, double base) {
         super("Triangle");

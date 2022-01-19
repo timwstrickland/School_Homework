@@ -7,9 +7,10 @@ package com.company;
 public class Cube extends ThreeDimensionalShape{
     // Since a Cube is a type of ThreeDimensionalShape, we state that this class extends that class.
     // A cube needs an edge.
-    double edge;
+    private final double edge;
 
     public Cube(double edge) {
+        // Here we pass in the name to the super class.
         super("Cube");
         this.edge = edge;
     }

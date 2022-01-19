@@ -7,11 +7,11 @@ package com.company;
 public class Rectangle extends TwoDimensionalShape {
     // Since a Rectangle is a type of TwoDimensionalShape, we state that this class extends that class.
     // In order to calculate the area, we need to know the length and the width
-    double length;
-    double width;
+    private final double length;
+    private final double width;
 
     public Rectangle(double length, double width) {
-        // Constructor that sets the name, length and width of the Rectangle.
+        // Here we pass in the name to the super class.
         super("Rectangle");
         this.length = length;
         this.width = width;
