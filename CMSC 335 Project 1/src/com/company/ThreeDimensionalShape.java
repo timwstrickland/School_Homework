@@ -10,9 +10,14 @@ public abstract class ThreeDimensionalShape extends Shape {
     // Three dimensional shapes use volume instead of area.
     double volume;
 
-    public ThreeDimensionalShape(String name, double volume) {
+    public ThreeDimensionalShape(String name) {
         super(name, 3);
-        this.volume = volume;
+    }
+
+    @Override
+    public String getDescriptive() {
+        this.volume=calculateVolume();
+        return "Volume = " + calculateVolume();
     }
 
     public abstract double calculateVolume();

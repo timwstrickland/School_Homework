@@ -1,4 +1,7 @@
 package com.company;
+
+import javax.print.MultiDocPrintJob;
+
 /* File: Torus.java
    Author: Timothy Strickland
    Date: 1/15/2022
@@ -10,14 +13,14 @@ public class Torus extends ThreeDimensionalShape{
     double majorRadius;
     double minorRadius;
 
-    public Torus(String name, double volume, double majorRadius, double minorRadius) {
-        super(name, volume);
+    public Torus(double majorRadius, double minorRadius) {
+        super("Torus");
         this.majorRadius = majorRadius;
         this.minorRadius = minorRadius;
     }
 
     @Override
     public double calculateVolume() {
-        return (Math.PI * (this.minorRadius * this.minorRadius) * (2 * (Math.PI * this.majorRadius)));
+        return Math.PI * (this.minorRadius * this.minorRadius) * (2 * (Math.PI * this.majorRadius));
     }
 }

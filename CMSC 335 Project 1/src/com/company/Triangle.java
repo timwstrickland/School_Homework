@@ -10,14 +10,15 @@ public class Triangle extends TwoDimensionalShape {
     double height;
     double base;
 
-    public Triangle(String name, double area, double height, double base) {
-        super(name, area);
+    public Triangle(double height, double base) {
+        super("Triangle");
         this.height = height;
         this.base = base;
     }
 
     @Override
     public double calculateArea() {
-        return (height * base)/2;
+        this.area = (height * base)/2;
+        return this.area;
     }
 }

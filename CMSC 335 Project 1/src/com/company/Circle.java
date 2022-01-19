@@ -9,13 +9,16 @@ public class Circle extends TwoDimensionalShape {
     // In order to calculate the area of a circle, we need to know the radius of the circle.
     double radius;
 
-    public Circle(String name, double area, double radius) {
-        super(name, area);
+    public Circle(double radius) {
+        // Constructor that sets the name and radius of the circle.
+        super("Circle");
         this.radius = radius;
     }
 
     @Override
     public double calculateArea() {
-        return Math.PI * (this.radius * 2);
+        // This method calculates the area of the circle and sets the area in the TwoDimensionalShape to be referenced.
+        this.area = Math.PI * (this.radius * this.radius);
+        return this.area;
     }
 }

@@ -10,8 +10,8 @@ public class Cone extends ThreeDimensionalShape{
     double radius;
     double height;
 
-    public Cone(String name, double volume, double radius, double height) {
-        super (name, volume);
+    public Cone(double radius, double height) {
+        super ("Cone");
         this.radius = radius;
         this.height = height;
     }

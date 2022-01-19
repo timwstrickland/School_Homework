@@ -10,14 +10,17 @@ public class Rectangle extends TwoDimensionalShape {
     double length;
     double width;
 
-    public Rectangle(String name, double area, double length, double width) {
-        super(name, area);
+    public Rectangle(double length, double width) {
+        // Constructor that sets the name, length and width of the Rectangle.
+        super("Rectangle");
         this.length = length;
         this.width = width;
     }
 
     @Override
     public double calculateArea() {
-        return length * width;
+        // This method calculates the area of the rectangle and sets the area in the TwoDimensionalShape to be referenced.
+        this.area = length * width;
+        return this.area;
     }
 }

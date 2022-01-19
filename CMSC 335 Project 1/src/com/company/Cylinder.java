@@ -10,8 +10,8 @@ public class Cylinder extends ThreeDimensionalShape {
     double radius;
     double height;
 
-    public Cylinder(String name, double volume, double radius, double height) {
-        super(name, volume);
+    public Cylinder(double radius, double height) {
+        super("Cylinder");
         this.radius = radius;
         this.height = height;
     }

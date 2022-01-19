@@ -9,7 +9,7 @@ public class Sphere extends ThreeDimensionalShape {
     double radius;
 
     public Sphere(String name, double volume, double radius) {
-        super(name, volume);
+        super(name);
         this.radius = radius;
     }
 

@@ -9,8 +9,8 @@ public class Cube extends ThreeDimensionalShape{
     // A cube needs an edge.
     double edge;
 
-    public Cube(String name, double volume, double edge) {
-        super(name, volume);
+    public Cube(double edge) {
+        super("Cube");
         this.edge = edge;
     }
 

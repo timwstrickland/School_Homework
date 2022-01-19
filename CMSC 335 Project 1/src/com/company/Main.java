@@ -1,10 +1,11 @@
 package com.company;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        getUserInput();
+        getChoice(getUserInput());
     }
 
     public static void printMenu() {
@@ -22,7 +23,6 @@ public class Main {
         System.out.println("9. Construct a Torus");
         System.out.println("10. Exit the Program");
     }
-
     public static int getUserInput() {
         // method that grabs the input from the user.
         int userInput;
@@ -39,6 +39,35 @@ public class Main {
             } catch (Exception e) {
                 System.out.println("The input was invalid, please enter an INTEGER between 1 and 10");
             }
+        }
+    }
+
+    public static void getChoice(int choice) {
+        Scanner scan = new Scanner(System.in);
+            try {
+                    switch (choice) {
+                        case 1:
+                            System.out.println("You have selected a Circle");
+                            System.out.println("What is the radius?");
+                            double radius = scan.nextDouble();
+                            Circle circle = new Circle(radius);
+                            circle.calculateArea();
+                            System.out.println(circle.toString());
+                            break;
+                        case 2:
+                            System.out.println("You have selected a Rectangle");
+                            System.out.println("What is the length?");
+                            double length = scan.nextDouble();
+                            System.out.println("What is the width?");
+                            double width = scan.nextDouble();
+                            Rectangle rectangle = new Rectangle(length, width);
+
+
+                    }
+
+                }
+        catch (Exception e) {
+            System.out.println("That is not a valid choice, please try again");
         }
     }
 }

@@ -10,10 +10,15 @@ public abstract class TwoDimensionalShape extends Shape {
     double area;
 
 
-    public TwoDimensionalShape(String name, double area) {
+    public TwoDimensionalShape(String name) {
         // Constructor that calls the super constructor.
         super(name, 2);
-        this.area = area;
+    }
+
+    @Override
+    public String getDescriptive() {
+        this.area=calculateArea();
+        return "Area = " + area;
     }
 
     public abstract double calculateArea();
