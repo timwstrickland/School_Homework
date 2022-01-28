@@ -31,10 +31,14 @@ public class ShapesMenu {
 
             public Double getDoubleAttribute(String attributeName, Scanner scanner) {
                 // since all the main attributes are doubles for shapes, this will get the double attribute.
-                return Double.valueOf(getStringAttribute(attributeName, scanner));
-            }
+                double value = Double.parseDouble(getStringAttribute(attributeName, scanner));
+                while (!(value >= 1)) {
+                    System.out.println("Bad input, please input a number greater than 0");
+                    value = Double.parseDouble(getStringAttribute(attributeName, scanner));
+                }
+                    return value;
+                }
         }
-
         // Create entries for our menu, where we return the attribute name.
         private final static MenuEntry circleEntry = new MenuEntry("Circle") {
 

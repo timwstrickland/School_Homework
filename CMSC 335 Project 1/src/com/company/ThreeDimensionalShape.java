@@ -10,19 +10,17 @@ public abstract class ThreeDimensionalShape extends Shape {
     // Three dimensional shapes use volume instead of area.
     // This is an abstract class, since there is no need to make a ThreeDimensionalShape by itself.
     // We want more restricted access to our area variable by giving no access modifier.
-    double volume;
+    final double volume;
 
-    public ThreeDimensionalShape(String name) {
+    public ThreeDimensionalShape(String name, double volume) {
         // Here we pass the number of dimensions to the superclass, the name is set in the subclass
         // since we don't know what type of shape this will be yet.
         super(name, 3);
+        this.volume = volume;
     }
 
     @Override
     public String getDescriptive() {
-        this.volume=calculateVolume();
-        return "Volume = " + calculateVolume();
+        return "Volume = " + volume;
     }
-
-    public abstract double calculateVolume();
 }
