@@ -1,6 +1,6 @@
 package com.company;
 
-import java.util.Scanner;
+import java.awt.Graphics;
 
 /* File: Shape.java
    Author: Timothy Strickland
@@ -26,4 +26,6 @@ public abstract class Shape {
     }
 
     public abstract String getDescriptive();
+
+    public abstract void draw(Graphics graphics);
 }

@@ -11,7 +11,6 @@ public abstract class TwoDimensionalShape extends Shape {
     // We want more restricted access to our area variable by giving no access modifier.
     final double area;
 
-
     public TwoDimensionalShape(String name, double area) {
         // Here we pass the number of dimensions to the superclass, the name is set in the subclass
         // since we don't know what type of shape this will be yet.

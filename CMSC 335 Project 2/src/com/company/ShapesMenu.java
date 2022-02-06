@@ -5,6 +5,10 @@ package com.company;
    Purpose: Sub-class of Shape
    Used Dr. Vergamini's code as a starting point.
  */
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -126,7 +130,8 @@ public class ShapesMenu {
                         // entries are counted from 1 for the user, but from 0 in the Java array
                         System.out.println((entryIndex + 1) + ". Construct a " + entries[entryIndex].getLabel());
                     }
-                    System.out.println((entries.length + 1) + ". Exit the program ");
+                    System.out.println((entries.length + 1) + ". Build from the GUI");
+                    System.out.println((entries.length + 2) + ". Exit the program ");
                     try {
                         menuSelection = Integer.parseInt(inputScanner.nextLine());
                     } catch (NumberFormatException numberFormatException) {
@@ -143,10 +148,17 @@ public class ShapesMenu {
                         } catch (Exception badInput) {
                             System.out.println("Invalid input for " + label);
                         }
-                    } else if (menuSelection != entries.length + 1) {
+                    } else if (menuSelection > entries.length + 2) {
                         // no valid input
                         System.out.println("Bad input");
-                    } else {
+                    }
+                    else if (menuSelection == entries.length + 1) {
+                        System.out.println("GUI launched");
+                        ShapesUI sg = new ShapesUI();
+                        sg.setVisible(true);
+                        sg.setAlwaysOnTop(true);
+                    }
+                    else {
                         // the last option was selected, this is the end of the interaction loop
                         break;
                     }
@@ -171,7 +183,5 @@ public class ShapesMenu {
             shapes.forEach(Shape -> {
                 System.out.println(Shape);
             });
-
         }
-
-    }
+}
