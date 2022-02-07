@@ -147,8 +147,8 @@ public class ShapesUI extends JFrame {
         controlPanel.add(createButton);
         add(controlPanel, BorderLayout.NORTH);
         add(shapeDisplayPanel, BorderLayout.CENTER);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(700, 700));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void createShape(String shapeName, MenuEntry menuEntry) {
