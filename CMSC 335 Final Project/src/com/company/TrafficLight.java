@@ -5,8 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TrafficLight {
     private final int radius; // pixels
-    private float x;
-    private float y;
+    private final float x;
+    private final float y;
     private Color color;
     private double timeRemaining;
     private final double lightTimer;
@@ -28,14 +28,11 @@ public class TrafficLight {
     }
 
     private Color pickColor() {
-        switch (ThreadLocalRandom.current().nextInt(2)) {
-            case 0:
-                return Color.GREEN;
-            case 1:
-                return Color.RED;
-            default:
-                return Color.BLACK;
-        }
+        return switch (ThreadLocalRandom.current().nextInt(2)) {
+            case 0 -> Color.GREEN;
+            case 1 -> Color.RED;
+            default -> Color.BLACK;
+        };
     }
 
     private Color switchColor() {
@@ -44,12 +41,9 @@ public class TrafficLight {
         }
         return Color.RED;
     }
+
     public double getTimeRemaining() {
         return timeRemaining;
-    }
-
-    public double getLightTimer () {
-        return lightTimer;
     }
 
     public void setTimeRemaining(float timeRemaining) {
@@ -64,50 +58,15 @@ public class TrafficLight {
         return 2 * radius;
     }
 
-    public float getLeftX() {
-        return x - radius;
-    }
-
-    public float getTopY() {
-        return y - radius;
-    }
-
     public float getX() {
         return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
     }
 
     public float getY() {
         return y;
     }
 
-    public void setY(float y) {
-        this.y = y;
-    }
-
     public int getRadius() {
         return radius;
-    }
-
-//    public void move(long deltaMilliseconds) {
-//        x += delta(speedX, deltaMilliseconds);
-//        y += delta(speedY, deltaMilliseconds);
-//    }
-//
-//    public void bounce() {
-//        speedX *= -1;
-//        speedY *= -1;
-//    }
-//
-//    static float delta(float deltaSpeed, long deltaMilliseconds) {
-//        return (deltaSpeed / 1000f) * deltaMilliseconds;
-//    }
-
-    public float getDistance(TrafficLight otherLight) {
-        // double centerDistance = Math.sqrt(deltaX * deltaX);
-        return x - otherLight.x;
     }
 }
