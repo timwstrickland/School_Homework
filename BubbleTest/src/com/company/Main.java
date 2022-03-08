@@ -21,6 +21,7 @@ public class Main extends JFrame {
         pauseCount = 0;
         TrafficManager trafficManager = new TrafficManager(1400, 300, 1L);
         trafficManager.add();
+        //trafficManager.add();
 //        for (int index = 0; index < 10; ++index) {
 //            trafficManager.add();
 //        }

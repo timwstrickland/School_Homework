@@ -8,17 +8,23 @@ public class TrafficLight {
     private float x;
     private float y;
     private Color color;
-    private float timeRemaining;
+    private double timeRemaining;
+    private final double lightTimer;
 
-    public TrafficLight(int radius, float x, float y) {
+    public TrafficLight(int radius, float x, float y, double lightTimer) {
         this.radius = radius;
         this.x = x;
         this.y = y;
         color = pickColor();
+        this.lightTimer = lightTimer;
+        timeRemaining = lightTimer;
     }
 
     public void updateColor() {
-        color = switchColor();
+        if(timeRemaining <= 0) {
+            color = switchColor();
+            timeRemaining = lightTimer;
+        }
     }
 
     private Color pickColor() {
@@ -37,6 +43,17 @@ public class TrafficLight {
             return Color.GREEN;
         }
         return Color.RED;
+    }
+    public double getTimeRemaining() {
+        return timeRemaining;
+    }
+
+    public double getLightTimer () {
+        return lightTimer;
+    }
+
+    public void setTimeRemaining(float timeRemaining) {
+        this.timeRemaining = timeRemaining;
     }
 
     public Color getColor() {
