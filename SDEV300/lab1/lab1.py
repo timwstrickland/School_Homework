@@ -3,7 +3,7 @@ import time
 
 first_name = None
 last_name = None
-age = None
+age = "None"
 citizen = None
 state = None
 zipcode = None
@@ -26,7 +26,18 @@ if user_selection == "no".lower():
 while user_selection == "yes".lower():
     first_name = input("What is your first name?")
     last_name = input("What is your last name?")
-    age = input("What is your current age?")
+    while True:
+        age = input("Please enter your age:")
+        try:
+            age = int(age)
+            break
+        except ValueError:
+            print("Your age must be an integer!")
+    if age < 18:
+        print("You are not eligible to vote!")
+        break
+    else:
+        pass
     run_user_selection()
     if user_selection == "yes".lower():
         pass
@@ -48,7 +59,7 @@ while user_selection == "yes".lower():
     zipcode = input("What is your zipcode:")
     print("Here is the information we have on you:")
     print("Name: " + first_name + " " + last_name)
-    print("Age: " + age)
+    print("Age: " + str(age))
     print("State: " + state)
     print("Zipcode: " + zipcode)
     break
